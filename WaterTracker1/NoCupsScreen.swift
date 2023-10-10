@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct NoCupsScreen: View {
+    @Binding var getNumOfCups: Int
     var body: some View {
-        Text("Nothing LOL ")//.navigationTitle("NoCupsScreen")
+  //  Text("Number of Cups \(getNumOfCups)")
+        Text("Number of Cups ")
+
+    .navigationTitle("NoCupsScreen")
     }
 }
 
 #Preview {
-    NoCupsScreen()
+    NoCupsScreen(getNumOfCups:.constant(0))
+   // NoCupsScreen()
 }

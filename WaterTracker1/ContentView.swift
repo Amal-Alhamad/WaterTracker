@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var aSAHD : Bool = false
+    @State var SharingAppleHealthDate : Bool = false
     // bcoz this var is includ struct
     @State var noOfCups: Int = 0
     @State var showWaterCupsView: Bool = false
@@ -20,38 +20,30 @@ struct ContentView: View {
                 Text("Water Tracker 💧").bold().font(.title3)
                 
                 Toggle("Apple Health" , isOn:
-                        $aSAHD)
+                        $SharingAppleHealthDate)
                 
                 Stepper {
                     Text("Cups to drink per day \(noOfCups)")
                 }
-            onIncrement:{noOfCups = noOfCups + 1
+            onIncrement:{
+                noOfCups += 1
             }
                 
-            onDecrement:{ noOfCups = noOfCups - 1
+            onDecrement:{ 
+                noOfCups -= 1
             }
                 
-                
-                Button{
-                    showWaterCupsView.toggle()
-                }label: {
+
+                NavigationLink(destination: NoCupsScreen(getNumOfCups:.constant(0))){
                     Text("Continue")
                 }
-
-
-               /* NavigationLink(destination: NoCupsScreen()){
-                    Text("Continue")
-                }
-              */
+              
            
             }
         }
         .padding()
-       // .navigationTitle("Water Treacker")
-        .sheet(isPresented: $showWaterCupsView, 
-               content: {
-            NoCupsScreen()
-        })
+        .navigationTitle("Water Treacker")
+
     }
     }
 
